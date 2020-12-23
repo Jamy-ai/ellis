@@ -1,0 +1,52 @@
+<BackgroundColor@Widget>
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<BackgroundLabel@Label+BackgroundColor>
+    background_color: 1, 0, 0, 1
+
+BoxLayout:
+    orientation: 'vertical'
+    FloatLayout:
+        size_hint_y:0.4
+        TextInput:
+            id : my_textinput
+            font_size: 40
+            size_hint: 1,.4
+            pos_hint: {"x":0,"top":0.95}
+        Button:
+            on_press:
+                app.display()
+            text: "Reply me"
+            font_size: 20
+            size_hint: 0.9, .2
+            pos_hint: {"x":0.05,"top":0.4}
+
+
+        #BackgroundLabel:
+            #id: my_label
+            #text: "nothing yet\n" * 100
+            #font_size: 5
+            #size_hint:1,0.4
+            #pos_hint: {"x":0,"y":0}
+            #background_color: 0,0,1,1
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+
+        BackgroundLabel:
+            id: my_label
+            size_hint_y: None
+            font_size: 20
+            height: self.texture_size[1]
+            text_size: self.width, None
+            background_color: 0,0,1,1
+            padding: 10, 10
+            text:
+                'Nothing yet'
